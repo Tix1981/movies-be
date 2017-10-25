@@ -35,6 +35,10 @@ class MoviesController extends Controller
      */
     public function store(Request $request)
     {
+        $validatedData = $request->validate(
+            Movie::Rules
+        );
+
         $movie = new Movie();
 
         $movie->name = $request->input('name');
@@ -80,6 +84,10 @@ class MoviesController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $validatedData = $request->validate(
+            Movie::Rules
+        );
+
         $movie = Movie::find($id);
 
         $movie->name = $request->input('name');
@@ -105,6 +113,6 @@ class MoviesController extends Controller
         $movie = Movie::find($id);
 
         $movie->delete();
-        
+
     }
 }

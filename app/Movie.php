@@ -4,6 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+
+
 class Movie extends Model
 {
 
@@ -17,5 +19,13 @@ class Movie extends Model
     {
         $this->attributes['genres'] = json_encode( $value );
     }
+
+    const Rules = [
+        'name' => 'required | unique',
+        'director' => 'required',
+        'duration' => 'required | min:1 | max:500',
+        'release_date' => 'required | unique',
+        'image_url' => 'url',
+    ];
 
 }
