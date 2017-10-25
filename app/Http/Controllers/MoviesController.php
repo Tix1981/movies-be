@@ -15,10 +15,22 @@ class MoviesController extends Controller
     public function index(Request $request)
     {
         $name = $request->query('name');
+        $term = $request->query('term');
+        $take = $request->query('take');
+        $skip = $request->query('skip');
 
-        if ($request) {
+        if ($name) {
             return Movie::where('name', 'like', '%' . $name . '%')->get();
-        } else {
+        };
+        if($term) {
+            return Movie::where('name', 'like', '%' . $term . '%')->get();
+        };
+        if($take && $skip) {
+
+            //
+
+        }
+        if {
             return Movie::all();
         }
     }
